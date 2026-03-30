@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core palette */
+  --calc-bg: #000000;
+  --calc-surface: #1C1C1E;
+  --calc-radius: 20px;
+  --calc-gap: 10px;
+  --calc-pad: 20px;
+
+  /* Legacy aliases used by components */
+  --ios-bg: #000000;
+  --ios-number-bg: #3A3A3C;
+  --ios-number-hover: #505052;
+  --ios-function-bg: #636366;
+  --ios-function-hover: #7A7A7E;
+  --ios-operator-bg: #FF9F0A;
+  --ios-operator-hover: rgba(255, 159, 10, 0.72);
+  --ios-operator-active-bg: #FFFFFF;
+  --ios-operator-active-text: #FF9F0A;
+  --ios-text: #FFFFFF;
+  --ios-text-dim: #8E8E93;
+  --ios-swipe: #007AFF;
+  --ios-radius: 20px;
+  --ios-gap: 10px;
+  --ios-pad: 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  background: #000000;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100%;
+}
+
+button {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: default;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.calc-root {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ── Animations ───────────────────────────────────────────────────────────── */
+
+/* Button spring release */
+@keyframes ios-spring {
+  0%   { transform: scale(0.93); }
+  45%  { transform: scale(1.03); }
+  72%  { transform: scale(0.985); }
+  100% { transform: scale(1.0); }
+}
+
+/* Result counter slide-in */
+@keyframes result-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Swipe trail fade */
+@keyframes trail-fade {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* History panel slide */
+@keyframes panel-slide-in {
+  from { transform: translateX(100%); opacity: 0.8; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes panel-slide-out {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(100%); opacity: 0.8; }
+}
+
+/* Backdrop fade in */
+@keyframes backdrop-appear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Gesture hint gentle pulse */
+@keyframes hint-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.65; }
+}
+
+/* History entry stagger */
+@keyframes entry-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+
+.history-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.history-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.history-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}

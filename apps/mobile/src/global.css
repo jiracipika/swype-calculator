@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: rgba(255, 255, 255, 0.8);
+  --bg-secondary: rgba(255, 255, 255, 0.6);
+  --bg-glass: rgba(255, 255, 255, 0.4);
+  --accent-blue: #007AFF;
+  --accent-pink: #FF2D55;
+  --accent-green: #34C759;
+  --text-primary: #1C1C1E;
+  --text-secondary: #8E8E93;
+  --trail-color: rgba(0, 122, 255, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
