@@ -6,9 +6,24 @@
   /* Core palette */
   --calc-bg: #000000;
   --calc-surface: #1C1C1E;
+  --calc-surface-raised: #2C2C2E;
   --calc-radius: 20px;
+  --calc-radius-card: 16px;
+  --calc-radius-btn: 10px;
   --calc-gap: 10px;
   --calc-pad: 20px;
+  --calc-max-w: 500px;
+
+  /* Semantic colors */
+  --color-accent: #FF9F0A;
+  --color-accent-dim: rgba(255, 159, 10, 0.14);
+  --color-accent-border: rgba(255, 159, 10, 0.25);
+  --color-blue: #007AFF;
+  --color-green: #34C759;
+  --color-red: #FF3B30;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #8E8E93;
+  --color-text-tertiary: rgba(255,255,255,0.35);
 
   /* Legacy aliases used by components */
   --ios-bg: #000000;
@@ -150,4 +165,365 @@ button {
 .history-scroll::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.12);
   border-radius: 2px;
+}
+
+/* ── Page shell ───────────────────────────────────────────────────────────── */
+
+.page-shell {
+  background: #000;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page-content {
+  max-width: var(--calc-max-w);
+  margin: 0 auto;
+  padding: 20px 16px 88px;
+}
+
+/* ── Page header ──────────────────────────────────────────────────────────── */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: max(4px, env(safe-area-inset-top));
+}
+
+.page-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.2px;
+}
+
+/* ── Navigation links / back buttons ─────────────────────────────────────── */
+
+.nav-link {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: 4px 0;
+  border-radius: 6px;
+  transition: color 0.15s ease-out, opacity 0.15s ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+.nav-link:active {
+  opacity: 0.6;
+}
+
+/* ── Cards / surfaces ─────────────────────────────────────────────────────── */
+
+.card {
+  padding: 16px;
+  border-radius: var(--calc-radius-card);
+  background: var(--calc-surface);
+  margin-bottom: 12px;
+}
+
+.card-section-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* ── Interactive row inside a card ───────────────────────────────────────── */
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.card-row + .card-row {
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+}
+
+/* ── Generic action button ────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--calc-radius-btn);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, background 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.btn:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.btn-ghost {
+  background: none;
+  color: var(--color-text-secondary);
+}
+
+.btn-ghost:hover {
+  color: var(--color-text);
+  background: rgba(255,255,255,0.06);
+}
+
+.btn-ghost:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+.btn-danger {
+  background: none;
+  color: var(--color-red);
+}
+
+.btn-danger:hover {
+  background: rgba(255,59,48,0.1);
+}
+
+.btn-danger:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+.btn-filled {
+  background: var(--calc-surface-raised);
+  color: var(--color-text);
+}
+
+.btn-filled:hover {
+  background: #3A3A3C;
+}
+
+.btn-filled:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--color-blue);
+  color: #fff;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 20px;
+}
+
+.btn-primary:hover {
+  background: #0A84FF;
+  box-shadow: 0 4px 12px rgba(0,122,255,0.4);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+/* ── Pill / chip buttons (category tabs) ─────────────────────────────────── */
+
+.pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease-out, color 0.15s ease-out, transform 0.1s ease-out;
+}
+
+.pill:active {
+  transform: scale(0.95);
+}
+
+.pill-active {
+  background: #fff;
+  color: #000;
+}
+
+.pill-inactive {
+  background: var(--calc-surface);
+  color: var(--color-text-secondary);
+}
+
+.pill-inactive:hover {
+  background: #2C2C2E;
+  color: var(--color-text);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* ── Select input ─────────────────────────────────────────────────────────── */
+
+.select-field {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--calc-radius-btn);
+  border: none;
+  font-size: 16px;
+  background: var(--calc-surface-raised);
+  color: var(--color-text);
+  margin-bottom: 8px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: background 0.15s ease-out;
+}
+
+.select-field:hover {
+  background: #3A3A3C;
+}
+
+.select-field:focus {
+  outline: 2px solid var(--color-blue);
+  outline-offset: -2px;
+}
+
+/* ── Number input ─────────────────────────────────────────────────────────── */
+
+.number-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--calc-radius-btn);
+  border: none;
+  font-size: 28px;
+  font-weight: 600;
+  background: var(--calc-surface-raised);
+  color: var(--color-text);
+  outline: none;
+  transition: background 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.number-input:focus {
+  background: #3A3A3C;
+  box-shadow: 0 0 0 2px rgba(0,122,255,0.5);
+}
+
+/* ── Text input ──────────────────────────────────────────────────────────── */
+
+.text-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--calc-radius-btn);
+  border: none;
+  font-size: 15px;
+  background: var(--calc-surface);
+  color: var(--color-text);
+  margin-bottom: 16px;
+  outline: none;
+  transition: box-shadow 0.15s ease-out;
+}
+
+.text-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.text-input:focus {
+  box-shadow: 0 0 0 2px rgba(0,122,255,0.5);
+}
+
+/* ── History entry card ───────────────────────────────────────────────────── */
+
+.history-entry {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--calc-surface);
+  margin-bottom: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.15s ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.history-entry:hover {
+  background: #252527;
+}
+
+.history-entry:active {
+  background: #2C2C2E;
+}
+
+/* ── Scientific calculator button ────────────────────────────────────────── */
+
+.sci-btn {
+  padding: 12px;
+  border-radius: var(--calc-radius-btn);
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background: var(--calc-surface);
+  color: var(--color-text);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s ease-out, transform 0.1s ease-out;
+}
+
+.sci-btn:hover {
+  background: #2C2C2E;
+}
+
+.sci-btn:active {
+  background: #3A3A3C;
+  transform: scale(0.95);
+}
+
+.sci-btn:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* ── Calc page button row ─────────────────────────────────────────────────── */
+
+.calc-btn {
+  padding: 18px 8px;
+  border-radius: 24px;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: filter 0.12s ease-out, transform 0.1s ease-out;
+}
+
+.calc-btn:hover {
+  filter: brightness(1.15);
+}
+
+.calc-btn:active {
+  transform: scale(0.93);
+  filter: brightness(0.9);
+}
+
+.calc-btn:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* ── Empty state ──────────────────────────────────────────────────────────── */
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
 }

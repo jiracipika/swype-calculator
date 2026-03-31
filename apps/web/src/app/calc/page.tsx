@@ -98,9 +98,9 @@ export default function Calculator() {
   return (
     <div style={{ background: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <div style={{ padding: '16px 16px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link href="/" style={{ fontSize: 14, color: '#8e8e93' }}>← Back</Link>
-        <Link href="/history" style={{ fontSize: 14, color: '#8e8e93' }}>History</Link>
-        <button onClick={() => setSci(!sci)} style={{ background: 'none', border: 'none', fontSize: 14, color: '#8e8e93', cursor: 'pointer' }}>{sci ? 'Basic' : 'Scientific'}</button>
+        <Link href="/" className="nav-link">← Back</Link>
+        <Link href="/history" className="nav-link">History</Link>
+        <button onClick={() => setSci(!sci)} className="btn btn-ghost" style={{ fontSize: 14 }}>{sci ? 'Basic' : 'Scientific'}</button>
       </div>
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 20px 20px' }}
@@ -114,10 +114,7 @@ export default function Calculator() {
         {sci && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 8, marginBottom: 8 }}>
             {SCI_BUTTONS.map(btn => (
-              <button key={btn} onClick={() => handleButton(btn)} style={{
-                padding: 12, borderRadius: 10, fontSize: 15, fontWeight: 500, border: 'none', cursor: 'pointer',
-                background: '#1c1c1e', color: '#fff',
-              }}>{btn}</button>
+              <button key={btn} onClick={() => handleButton(btn)} className="sci-btn">{btn}</button>
             ))}
           </div>
         )}
@@ -128,8 +125,8 @@ export default function Calculator() {
               const isOp = opColor[btn];
               const isTop = ri === 0 && !isOp;
               return (
-                <button key={btn} onClick={() => handleButton(btn)} style={{
-                  padding: '18px 8px', borderRadius: 24, fontSize: 26, fontWeight: isOp ? 600 : 400, border: 'none', cursor: 'pointer',
+                <button key={btn} onClick={() => handleButton(btn)} className="calc-btn" style={{
+                  fontWeight: isOp ? 600 : 400,
                   background: isTop ? '#a5a5a5' : isOp ? '#FF9500' : '#333',
                   color: isTop ? '#000' : '#fff',
                 }}>{btn}</button>

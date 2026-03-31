@@ -72,51 +72,57 @@ export default function Converter() {
   };
 
   return (
-    <div style={{ background: '#000', minHeight: '100vh' }}>
-      <div style={{ maxWidth: 500, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 20 }}>
-          <Link href="/calc" style={{ fontSize: 14, color: '#8e8e93' }}>← Calculator</Link>
-          <span style={{ fontSize: 15, color: '#fff', fontWeight: 600 }}>Converter</span>
+    <div className="page-shell">
+      <div className="page-content">
+        <div className="page-header">
+          <Link href="/calc" className="nav-link">← Calculator</Link>
+          <span className="page-title">Converter</span>
           <span style={{ width: 50 }} />
         </div>
 
         <div style={{ display: 'flex', gap: 6, marginBottom: 20, overflowX: 'auto', paddingBottom: 4 }}>
           {Object.keys(CATEGORIES).map(c => (
-            <button key={c} onClick={() => handleCatChange(c)} style={{
-              padding: '6px 12px', borderRadius: 10, fontSize: 13, fontWeight: 500, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
-              background: cat === c ? '#fff' : '#1c1c1e', color: cat === c ? '#000' : '#8e8e93',
-            }}>{Object.values(CATEGORIES[c])[0].emoji} {c}</button>
+            <button
+              key={c}
+              onClick={() => handleCatChange(c)}
+              className={`pill ${cat === c ? 'pill-active' : 'pill-inactive'}`}
+            >
+              {Object.values(CATEGORIES[c])[0].emoji} {c}
+            </button>
           ))}
         </div>
 
-        <div style={{ padding: 20, borderRadius: 16, background: '#1c1c1e', marginBottom: 12 }}>
-          <select value={from} onChange={e => setFrom(e.target.value)} style={{ width: '100%', padding: 10, borderRadius: 10, border: 'none', fontSize: 16, background: '#2c2c2e', color: '#fff', marginBottom: 8, appearance: 'none' }}>
+        <div className="card" style={{ padding: 20, marginBottom: 12 }}>
+          <select value={from} onChange={e => setFrom(e.target.value)} className="select-field">
             {units.map(u => <option key={u} value={u}>{u}</option>)}
           </select>
-          <input type="number" value={value} onChange={e => setValue(e.target.value)} style={{
-            width: '100%', padding: 12, borderRadius: 10, border: 'none', fontSize: 28, fontWeight: 600,
-            background: '#2c2c2e', color: '#fff', outline: 'none',
-          }} />
+          <input
+            type="number"
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            className="number-input"
+          />
         </div>
 
         <div style={{ textAlign: 'center', marginBottom: 12 }}>
-          <button onClick={swap} style={{ width: 44, height: 44, borderRadius: '50%', border: 'none', background: '#007aff', color: '#fff', fontSize: 20, cursor: 'pointer' }}>⇅</button>
+          <button onClick={swap} className="btn btn-primary">⇅</button>
         </div>
 
-        <div style={{ padding: 20, borderRadius: 16, background: '#1c1c1e', marginBottom: 20 }}>
-          <select value={to} onChange={e => setTo(e.target.value)} style={{ width: '100%', padding: 10, borderRadius: 10, border: 'none', fontSize: 16, background: '#2c2c2e', color: '#fff', marginBottom: 8, appearance: 'none' }}>
+        <div className="card" style={{ padding: 20, marginBottom: 20 }}>
+          <select value={to} onChange={e => setTo(e.target.value)} className="select-field">
             {units.map(u => <option key={u} value={u}>{u}</option>)}
           </select>
-          <div style={{ padding: 12, borderRadius: 10, background: '#2c2c2e', fontSize: 28, fontWeight: 600, color: '#34c759' }}>
-            {value ? result.toPrecision(6) : '0'} <span style={{ fontSize: 16, color: '#8e8e93' }}>{to}</span>
+          <div style={{ padding: 12, borderRadius: 10, background: '#2C2C2E', fontSize: 28, fontWeight: 600, color: 'var(--color-green)' }}>
+            {value ? result.toPrecision(6) : '0'}{' '}
+            <span style={{ fontSize: 16, color: 'var(--color-text-secondary)' }}>{to}</span>
           </div>
         </div>
 
         {recent.length > 0 && (
           <div>
-            <h3 style={{ fontSize: 14, fontWeight: 600, color: '#8e8e93', marginBottom: 8 }}>Recent</h3>
+            <h3 style={{ fontSize: 12, fontWeight: 600, color: 'var(--color-text-secondary)', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: 8 }}>Recent</h3>
             {recent.map((r, i) => (
-              <div key={i} style={{ padding: '10px 14px', borderRadius: 10, background: '#1c1c1e', marginBottom: 6, fontSize: 14, color: '#fff' }}>
+              <div key={i} className="history-entry" style={{ fontSize: 14 }}>
                 {r.val} {r.from} → {r.result} {r.to}
               </div>
             ))}
